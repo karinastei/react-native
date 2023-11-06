@@ -13,6 +13,6 @@ title: {
     color: colors.white,
     textAlign: 'center',
     fontSize: 16,
-    fontWeigh:'bold'
+    fontWeight: 'bold'
 }
 })

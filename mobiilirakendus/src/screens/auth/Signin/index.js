@@ -19,7 +19,7 @@ const Signin = () => {
             <Button style={styles.button} title="Sign In"/>
             <Separator text="Or sign in with"/>
             <GoogleLogin/>
-            <Text style={styles.footerText}>Already have an account?
+            <Text style={styles.footerText}>Don't have an account?
                 <Text style={styles.footerLink}>Sign Up</Text>
             </Text>
         </View>

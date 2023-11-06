@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     },
     label: {
         color: colors.blue,
-        fontWeight: '500',
+        fontWeight: 'bold',
     },
     agreeRow: {
         flexDirection: 'row',
