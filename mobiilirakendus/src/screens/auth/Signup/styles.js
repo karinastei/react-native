@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     footerText: {
         color: colors.blue,
         textAlign: 'center',
-        paddingBottoms: 20
+
     },
     footerLink: {
         fontWeight: 'bold'

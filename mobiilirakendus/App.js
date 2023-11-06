@@ -7,19 +7,31 @@ import Input from './src/components/Input';
 import Signin from './src/screens/auth/Signin';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { colors } from './src/utils/colors';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 //const REVERSED_CLIENT_ID = 'com.googleusercontent.apps.79243600821-jdm74p3nr5frlui1p9hqismip60vui8m'
 
 const Stack = createNativeStackNavigator();
 
+const theme = {
+  colors: {
+    background: colors.white
+  },
+};
+
 const App = () => {
   //useEffect(() => {}, [])
   return (
-    <NavigationContainer>
+    <SafeAreaProvider>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator>
-          <Stack.Screen name="Splash" component={Splash} />
+          <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}}/>
+          <Stack.Screen name="Signup" component={Signup} options={{headerShown: false}}/>
+          <Stack.Screen name="Signin" component={Signin} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

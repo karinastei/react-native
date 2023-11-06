@@ -5,7 +5,7 @@ import { colors } from "../../../utils/colors";
 export const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 20,
-        width: '100%',
+        width: '100%'
     },
     inputContainer: {
         borderColor: colors.grey,
@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
     footerText: {
         color: colors.blue,
         textAlign: 'center',
-        paddingBottoms: 20
+        paddingBottom: 20
     },
     footerLink: {
         fontWeight: 'bold'
