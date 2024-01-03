@@ -8,25 +8,33 @@ import CategoryBox from '../../../components/CategoryBox';
 import {products} from '../../../data/products';
 import ProductHomeItem from '../../../components/ProductHomeItem';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [keyword, setKeyword] = useState();
   const [selectedProducts, setSelectedProducts] = useState(products);
 
   useEffect(() => {
-    if(selectedCategory && !keyword) {
-        const updatedSelectedProducts = products.filter((product) => product?.category === selectedCategory)
-        setSelectedProducts(updatedSelectedProducts)
-    } else if(selectedCategory && keyword){
-        const updatedSelectedProducts = products.filter((product) => product?.category === selectedCategory && product?.title?.toLowerCase().includes(keyword.toLowerCase()))
-        setSelectedProducts(updatedSelectedProducts)
+    if (selectedCategory && !keyword) {
+      const updatedSelectedProducts = products.filter(
+        product => product?.category === selectedCategory,
+      );
+      setSelectedProducts(updatedSelectedProducts);
+    } else if (selectedCategory && keyword) {
+      const updatedSelectedProducts = products.filter(
+        product =>
+          product?.category === selectedCategory &&
+          product?.title?.toLowerCase().includes(keyword.toLowerCase()),
+      );
+      setSelectedProducts(updatedSelectedProducts);
     } else if (!selectedCategory && keyword) {
-        const updatedSelectedProducts = products.filter((product) => product?.title?.toLowerCase().includes(keyword?.toLowerCase()))
-        setSelectedProducts(updatedSelectedProducts)
-    } else if (!keyword && !selectedCategory){
-        setSelectedProducts(products)
+      const updatedSelectedProducts = products.filter(product =>
+        product?.title?.toLowerCase().includes(keyword?.toLowerCase()),
+      );
+      setSelectedProducts(updatedSelectedProducts);
+    } else if (!keyword && !selectedCategory) {
+      setSelectedProducts(products);
     }
-}, [selectedCategory, keyword])
+  }, [selectedCategory, keyword]);
 
   const renderCategoryItem = ({item}) => {
     return (
@@ -40,14 +48,23 @@ const Home = () => {
   };
 
   const renderProductItem = ({item}) => {
-    console.log('item => ', item);
-    return <ProductHomeItem {...item} />;
+    const onProductPress = (product) => {
+        navigation.navigate('ProductDetails', {product})
+    }
+    return (
+    <ProductHomeItem onPress={() => onProductPress(item)} {...item} />
+    )
   };
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Header showSearch={true} onSearchKeyword={setKeyword} keyword={keyword} title="Find All You Need" />
+        <Header
+          showSearch={true}
+          onSearchKeyword={setKeyword}
+          keyword={keyword}
+          title="Find All You Need"
+        />
         <FlatList
           showsHorizontalScrollIndicator={false}
           style={styles.list}
